@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :user
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to:"homes#top"
+  root to:'homes#top'
+  devise_for :users
+
+  # ７つのルーティングを一括生成(今回は下の３つだけ +createも)
+  resources :post_images, only: [:new, :create, :index, :show]
+
   get '/homes/about' => 'homes#about', as:'about'
+
 
 end
